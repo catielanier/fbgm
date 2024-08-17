@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     protected $connection = 'mongodb';
 
-    protected $collection = 'transactions';
+    protected $collection = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +21,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstName',
+        'lastName',
         'email',
         'password',
     ];
@@ -33,7 +34,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
