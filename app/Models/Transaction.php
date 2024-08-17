@@ -11,4 +11,8 @@ class Transaction extends Model {
     protected $connection = 'mongodb';
 
     protected $collection = 'transactions';
+
+    protected $fillable = [
+        'recipient', 'amount', 'date', 'category', 'user'
+    ];
 }

@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $connection = 'mongodb';
+
+    protected $collection = 'transactions';
+
     /**
      * The attributes that are mass assignable.
      *
