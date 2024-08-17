@@ -9,5 +9,6 @@ Route::get('/{vue_capture?}', function() {
 // Transaction routes
 Route::get('/api/transactions', 'TransactionController@index');
 Route::post('/api/transactions', 'TransactionController@store');
+Route::get('/api/transactions/{id}', 'TransactionController@show');
 Route::put('/api/transactions/{id}', 'TransactionController@update');
 Route::delete('/api/transactions/{id}', 'TransactionController@destroy');

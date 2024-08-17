@@ -11,6 +11,11 @@ class TransactionController extends Controller {
         return response()->json($transactions);
     }
 
+    public function show($id) {
+        $transaction = Transaction::where('_id', $id)->get();
+        return response()->json($transaction);
+    }
+
     public function store(Request $request) {
         $transaction = new Transaction($request->all());
         $transaction->save();
