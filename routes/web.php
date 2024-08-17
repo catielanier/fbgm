@@ -17,4 +17,4 @@ Route::delete('/api/transactions/{id}', 'TransactionController@destroy');
 // User routes
 Route::post('/api/user/login', 'UserController@login');
 Route::post('/api/user/register', 'UserController@register');
-Route::delete('/api/user/delete/{id}', 'UserController@destroy');
+Route::delete('/api/user/delete', 'UserController@destroy');

@@ -33,7 +33,7 @@ class UserController extends Controller {
             'firstName' => ['required', 'string'],
             'lastName' => ['required', 'string'],
         ]);
-        $hashedPwd = '';
+        $hashedPwd = null;
         if ($validated['password'] === $validated['verifyPassword']) {
             $hashedPwd = password_hash($validated['password'], PASSWORD_BCRYPT);
         } else {
@@ -44,5 +44,30 @@ class UserController extends Controller {
         $user = new User($validated);
         $user->save();
         return response()->json(['success' => 'User created'], 200);
+    }
+
+    public function destroy(Request $request) {
+        $token = null;
+        $headers = $request->header();
+        if (isset($headers['Authorization'])) {
+            $authorization = $headers['Authorization'];
+            $matches = [];
+            preg_match('/Bearer\s(\S+)/', $authorization, $matches);
+            if (isset($matches[1])) {
+                $token = $matches[1];
+            } else {
+                return response()->json(['error' => 'Unauthorized'], 403);
+            }
+        } else {
+            response()->json(['error' => 'Authorization header not found.'], 403);
+        }
+        $jwtSecret = env('SECRET');
+        $decoded = JWT::decode($token, new Key($jwtSecret, 'HS256'));
+        $tokenArr = (array)$decoded->data;
+        $user = $tokenArr['userId'];
+        $result = User::where('_id', $user)->first()->delete();
+        if ($result) {
+            return response()->json(['success' => 'User deleted successfully'], 200);
+        }
     }
 }
