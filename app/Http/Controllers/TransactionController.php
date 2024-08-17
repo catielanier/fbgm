@@ -16,4 +16,18 @@ class TransactionController extends Controller {
         $transaction->save();
         return response()->json($transaction);
     }
+
+    public function update(Request $request, $id) {
+        $transaction = Transaction::where('_id', $id)->update($request->all());
+        return response()->json($transaction);
+    }
+
+    public function destroy($id) {
+        try {
+            $result = Transaction::where('_id', $id)->delete();
+            return response()->json($result);
+        } catch (\Throwable $th) {
+            return response()->json($th);
+        }
+    }
 }
