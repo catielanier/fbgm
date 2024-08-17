@@ -7,3 +7,4 @@ Route::get('/{vue_capture?}', function() {
 })->where('vue_capture', '[\/\w\.-]*');
 
 Route::get('/api/transactions', 'TransactionController@index');
+Route::post('/api/transactions', 'TransactionController@store');
