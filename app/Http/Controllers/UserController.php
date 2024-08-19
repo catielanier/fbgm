@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Firebase\JWT\Key;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Firebase\JWT\JWT;
@@ -69,5 +70,6 @@ class UserController extends Controller {
         if ($result) {
             return response()->json(['success' => 'User deleted successfully'], 200);
         }
+        return response()->json(['error' => 'Unauthorized'], 403);
     }
 }

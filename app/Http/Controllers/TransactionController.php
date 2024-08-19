@@ -31,7 +31,7 @@ class TransactionController extends Controller {
         return response()->json($transactions);
     }
 
-    public function show($id) {
+    public function show(Request $request, $id) {
         $token = null;
         $headers = $request->header();
         if (isset($headers['Authorization'])) {
@@ -82,7 +82,7 @@ class TransactionController extends Controller {
         $decoded = JWT::decode($token, new Key($jwtSecret, 'HS256'));
         $tokenArr = (array)$decoded->data;
         $userId = $tokenArr['userId'];
-        $validated['user'] = $userId
+        $validated['user'] = $userId;
         $transaction = new Transaction($validated);
         $transaction->save();
         return response()->json($transaction);
