@@ -59,7 +59,7 @@ class UserController extends Controller {
                 return response()->json(['error' => 'Unauthorized'], 403);
             }
         } else {
-            response()->json(['error' => 'Authorization header not found.'], 403);
+            return response()->json(['error' => 'Authorization header not found.'], 403);
         }
         $jwtSecret = env('SECRET');
         $decoded = JWT::decode($token, new Key($jwtSecret, 'HS256'));
