@@ -18,3 +18,9 @@ Route::delete('/api/transactions/{id}', 'TransactionController@destroy');
 Route::post('/api/user/login', 'UserController@login');
 Route::post('/api/user/register', 'UserController@register');
 Route::delete('/api/user/delete', 'UserController@destroy');
+
+// Wallet routes
+Route::get('/api/wallets', 'WalletController@index');
+Route::post('/api/wallets', 'WalletController@store');
+Route::put('/api/wallets/{id}', 'WalletController@update');
+Route::delete('/api/wallets/{id}', 'WalletController@destroy');
