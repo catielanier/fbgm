@@ -27,7 +27,7 @@ class TransactionController extends Controller {
         $decoded = JWT::decode($token, new Key($jwtSecret, 'HS256'));
         $tokenArr = (array)$decoded->data;
         $userId = $tokenArr['userId'];
-        $transactions = Transaction::where('user', $userId);
+        $transactions = Transaction::where('user', $userId)->get();
         return response()->json($transactions);
     }
 
