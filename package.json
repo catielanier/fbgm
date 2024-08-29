@@ -6,9 +6,15 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@babel/types": "^7.25.4",
+        "@types/node": "^22.5.1",
+        "@types/vue": "^2.0.0",
+        "@vue/tsconfig": "^0.5.1",
         "axios": "^1.7.3",
         "laravel-vite-plugin": "^1.0",
-        "vite": "^5.0"
+        "typescript": "^5.5.4",
+        "vite": "^5.0",
+        "vue-tsc": "^2.1.0"
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^5.1.2",
