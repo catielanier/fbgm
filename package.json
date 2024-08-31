@@ -1,19 +1,27 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "axios": "^1.7.3",
-        "laravel-vite-plugin": "^1.0",
-        "vite": "^5.0"
-    },
-    "dependencies": {
-        "@vitejs/plugin-vue": "^5.1.2",
-        "vue": "^3.4.36",
-        "vue-loader": "^17.3.1",
-        "vue-router": "^4.4.3"
-    }
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && yarn build:types",
+    "build:types": "vue-tsc --project tsconfig.build-types.json --declaration --emitDeclarationOnly --outDir dist/types ",
+    "typecheck": "vue-tsc --project tsconfig.build-types.json --noEmit"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.25.4",
+    "@types/node": "^22.5.1",
+    "@types/vue": "^2.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "axios": "^1.7.3",
+    "laravel-vite-plugin": "^1.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.0",
+    "vue-tsc": "^2.1.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "vue": "^3.4.36",
+    "vue-loader": "^17.3.1",
+    "vue-router": "^4.4.3"
+  }
 }
